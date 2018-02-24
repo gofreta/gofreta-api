@@ -1,0 +1,23 @@
+[
+	{
+		"_id":      "5a894a3ee138237565d4f7ce",
+		"locale":   "en",
+		"title":    "English",
+		"created":  1518946878,
+		"modified": 1518946878
+	},
+	{
+		"_id":      "5a89601d35eca6cea28f09c8",
+		"locale":   "bg",
+		"title":    "Bulgarian",
+		"created":  1518946878,
+		"modified": 1518946878
+	},
+	{
+		"_id":      "5a8be9dfe1382310bec8076a",
+		"locale":   "de",
+		"title":    "German",
+		"created":  1518946878,
+		"modified": 1518946878
+	}
+]

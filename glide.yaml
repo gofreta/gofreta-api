@@ -1,0 +1,21 @@
+package: app
+import:
+- package: github.com/globalsign/mgo
+  version: r2017.11.06
+
+- package: github.com/go-tomb/tomb
+  version: v2
+
+- package: github.com/go-ozzo/ozzo-routing
+  version: ^2.0
+
+- package: github.com/go-ozzo/ozzo-validation
+  version: ^3.0
+
+- package: github.com/go-gomail/gomail
+  version: ^2.0
+
+- package: github.com/spf13/viper
+  version: 4dddf7c62e16bce5807744018f5b753bfe21bbd2
+
+- package: golang.org/x/crypto/bcrypt

@@ -1,0 +1,29 @@
+[
+	{
+		"_id": "5a7c9378e138230137212eb5",
+		"type": "image",
+		"title": "file1",
+		"description": "",
+		"path": "data/1.png",
+		"created": 1518113656,
+		"modified": 1518113656
+	},
+	{
+		"_id": "5a7cb889e1382325ece3a108",
+		"type": "image",
+		"title": "file2",
+		"description": "Lorem Ipsum dolor sit amet...",
+		"path": "data/2.png",
+		"created": 1518123145,
+		"modified": 1518250526
+	},
+	{
+		"_id": "5a7db16de138233f19f7d815",
+		"type": "other",
+		"title": "file3",
+		"description": "",
+		"path": "data/3.zip",
+		"created": 1518186861,
+		"modified": 1518186861
+	}
+]

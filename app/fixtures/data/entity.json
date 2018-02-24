@@ -1,0 +1,152 @@
+[
+	{
+		"_id": "5a8bea3ae1382310bec8076b",
+		"collection_id": "5a833090e1382351eaad3732",
+		"status": "active",
+		"data": {
+			"en": {
+				"short_description": "Test short description en",
+				"description": "<p>Test description en</p>",
+				"title": "Test 1 title en"
+			},
+			"bg": {
+				"title": "Test 1 title bg",
+				"short_description": "Test short description bg",
+				"description": "<p>Test description bg</p>"
+			},
+			"de": {
+				"short_description": "Test short description de",
+				"description": "<p>Test description de</p>",
+				"title": "Test 1 title de"
+			}
+		},
+		"created": 1519118906,
+		"modified": 1519118906
+	},
+	{
+		"_id": "5a8bea7ee1382310bec8076c",
+		"collection_id": "5a833090e1382351eaad3732",
+		"status": "active",
+		"data": {
+			"en": {
+				"title": "Test 2 title en",
+				"short_description": "Test 2 short description en",
+				"description": "<p>Test 2 description en</p>"
+			},
+			"bg": {
+				"title": "Test 2 title bg",
+				"short_description": "Test 2 short description bg",
+				"description": "<p>Test 2 description bg</p>"
+			},
+			"de": {
+				"title": "Test 2 title de",
+				"short_description": "Test 2 short description de",
+				"description": "<p>Test 2 description de</p>"
+			}
+		},
+		"created": 1519118974,
+		"modified": 1519118974
+	},
+	{
+		"_id": "5a8beaa2e1382310bec8076d",
+		"collection_id": "5a8b32d4e13823769a18bc1c",
+		"status": "active",
+		"data": {
+			"en": {
+				"release": 1,
+				"published": true,
+				"options": [
+					"1",
+					"2"
+				],
+				"files": [
+					"5a7cb889e1382325ece3a108"
+				],
+				"rels": [ "5a8bea3ae1382310bec8076b" ],
+				"title": "Col2 Test en",
+				"description": "<p>asdasdasd</p>",
+				"variants": "a"
+			},
+			"bg": {
+				"description": "<p>asdasdasd</p>",
+				"variants": "a",
+				"release": 1519119010,
+				"published": true,
+				"options": [
+					"1",
+					"2"
+				],
+				"files": [
+					"5a7cb889e1382325ece3a108"
+				],
+				"rels": [ "5a8bea3ae1382310bec8076b" ],
+				"title": "Col2 Test bg"
+			},
+			"de": {
+				"options": [
+					"1",
+					"2"
+				],
+				"files": [
+					"5a7c9378e138230137212eb5"
+				],
+				"rels": [ "5a8bea3ae1382310bec8076b" ],
+				"title": "Col2 Test de",
+				"description": "<p>asdasdasd</p>",
+				"variants": "a",
+				"release": 1519119010,
+				"published": true
+			}
+		},
+		"created": 1519119010,
+		"modified": 1519122756
+	},
+	{
+		"_id": "5a8beab7e1382310bec8076e",
+		"collection_id": "5a8b33a4e13823769a18bc1d",
+		"status": "active",
+		"data": {
+			"en": {
+				"image": [
+					"5a7c9378e138230137212eb5"
+				]
+			},
+			"bg": {
+				"image": [
+					"5a7c9378e138230137212eb5"
+				]
+			},
+			"de": {
+				"image": [
+					"5a7c9378e138230137212eb5"
+				]
+			}
+		},
+		"created": 1519119031,
+		"modified": 1519119031
+	},
+	{
+		"_id": "5a8beac6e1382310bec8076f",
+		"collection_id": "5a8b33a4e13823769a18bc1d",
+		"status": "inactive",
+		"data": {
+			"de": {
+				"image": [
+					"5a7db16de138233f19f7d815"
+				]
+			},
+			"en": {
+				"image": [
+					"5a7db16de138233f19f7d815"
+				]
+			},
+			"bg": {
+				"image": [
+					"5a7db16de138233f19f7d815"
+				]
+			}
+		},
+		"created": 1519119046,
+		"modified": 1519119046
+	}
+]

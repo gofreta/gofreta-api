@@ -1,0 +1,196 @@
+[
+	{
+		"_id": "5a833090e1382351eaad3732",
+		"title": "Collection 1",
+		"name": "col1",
+		"fields": [
+			{
+				"key": "title",
+				"type": "plain",
+				"label": "Title",
+				"required": true,
+				"unique": false,
+				"multilingual": true,
+				"default": "",
+				"meta": {}
+			},
+			{
+				"key": "short_description",
+				"type": "editor",
+				"label": "Short description",
+				"required": false,
+				"unique": false,
+				"multilingual": true,
+				"default": "",
+				"meta": {
+					"mode": "simple"
+				}
+			},
+			{
+				"key": "description",
+				"type": "editor",
+				"label": "Description",
+				"required": true,
+				"unique": false,
+				"multilingual": true,
+				"default": "",
+				"meta": {
+					"mode": "rich"
+				}
+			}
+		],
+		"create_hook": "",
+		"update_hook": "",
+		"delete_hook": "",
+		"created": 1518547088,
+		"modified": 1518549677
+	},
+	{
+		"_id": "5a8b32d4e13823769a18bc1c",
+		"title": "Collection 2",
+		"name": "col2",
+		"fields": [
+			{
+				"key": "title",
+				"type": "plain",
+				"label": "title",
+				"required": true,
+				"unique": false,
+				"multilingual": true,
+				"default": "",
+				"meta": {}
+			},
+			{
+				"key": "description",
+				"type": "editor",
+				"label": "Description",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": "",
+				"meta": {
+					"mode": "rich"
+				}
+			},
+			{
+				"key": "variants",
+				"type": "select",
+				"label": "Variants",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": "",
+				"meta": {
+					"options": [
+						{
+							"value": "a",
+							"name": "Variant A"
+						},
+						{
+							"name": "Variant B",
+							"value": "b"
+						}
+					]
+				}
+			},
+			{
+				"key": "release",
+				"type": "date",
+				"label": "Release",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": "",
+				"meta": {
+					"format": "Y-m-d H:i:s",
+					"mode": "datetime"
+				}
+			},
+			{
+				"key": "published",
+				"type": "switch",
+				"label": "Published",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": true,
+				"meta": {}
+			},
+			{
+				"key": "options",
+				"type": "checklist",
+				"label": "Options",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": "",
+				"meta": {
+					"options": [
+						{
+							"name": "Option 1",
+							"value": "1"
+						},
+						{
+							"name": "Option 2",
+							"value": "2"
+						}
+					]
+				}
+			},
+			{
+				"key": "files",
+				"type": "media",
+				"label": "Files",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": "",
+				"meta": {
+					"max": 2
+				}
+			},
+			{
+				"key": "rels",
+				"type": "relation",
+				"label": "Rels",
+				"required": false,
+				"unique": false,
+				"multilingual": false,
+				"default": "",
+				"meta": {
+					"collection_id": "5a833090e1382351eaad3732",
+					"max": null
+				}
+			}
+		],
+		"create_hook": "",
+		"update_hook": "",
+		"delete_hook": "",
+		"created": 1519071956,
+		"modified": 1519122544
+	},
+	{
+		"_id": "5a8b33a4e13823769a18bc1d",
+		"title": "Collection 3",
+		"name": "col3",
+		"fields": [
+			{
+				"key": "image",
+				"type": "media",
+				"label": "Image",
+				"required": false,
+				"unique": false,
+				"multilingual": true,
+				"default": "",
+				"meta": {
+					"max": 1
+				}
+			}
+		],
+		"create_hook": "",
+		"update_hook": "",
+		"delete_hook": "",
+		"created": 1519072164,
+		"modified": 1519072187
+	}
+]

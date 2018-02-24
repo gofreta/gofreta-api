@@ -1,0 +1,95 @@
+hash: f2042125832a97c6fc783b62d3595d6aa216bb4e5b499da805b05a7e0e756831
+updated: 2018-02-24T15:51:51.947878274+02:00
+imports:
+- name: github.com/asaskevich/govalidator
+  version: 4b3d68f87f176641ffc147420296013aff66ea32
+- name: github.com/dgrijalva/jwt-go
+  version: dbeaa9332f19a944acb5736b4456cfcc02140e29
+- name: github.com/fsnotify/fsnotify
+  version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
+- name: github.com/globalsign/mgo
+  version: 5be15cc6a44937b6937a9487e1633f8a5fb25e4a
+  subpackages:
+  - bson
+  - dbtest
+  - internal/json
+  - internal/sasl
+  - internal/scram
+- name: github.com/go-gomail/gomail
+  version: 81ebce5c23dfd25c6c67194b37d3dd3f338c98b1
+- name: github.com/go-ozzo/ozzo-routing
+  version: 9dcabc145f0d565b5219e2fd72c3da04876980b7
+  subpackages:
+  - access
+  - auth
+  - content
+  - cors
+  - fault
+  - file
+  - slash
+- name: github.com/go-ozzo/ozzo-validation
+  version: 85dcd8368eba387e65a03488b003e233994e87e9
+  subpackages:
+  - is
+- name: github.com/go-tomb/tomb
+  version: d5d1b5820637886def9eef33e03a27a9f166942c
+- name: github.com/golang/gddo
+  version: dcea65fd03382fd4f4df9ebdac117c6e0cde2594
+  subpackages:
+  - httputil/header
+- name: github.com/hashicorp/hcl
+  version: 68e816d1c783414e79bc65b3994d9ab6b0a722ab
+  subpackages:
+  - hcl/ast
+  - hcl/parser
+  - hcl/scanner
+  - hcl/strconv
+  - hcl/token
+  - json/parser
+  - json/scanner
+  - json/token
+- name: github.com/magiconair/properties
+  version: 2c9e9502788518c97fe44e8955cd069417ee89df
+- name: github.com/mitchellh/mapstructure
+  version: 00c29f56e2386353d58c599509e8dc3801b0d716
+- name: github.com/pelletier/go-toml
+  version: acdc4509485b587f5e675510c4f2c63e90ff68a8
+- name: github.com/spf13/afero
+  version: ee1bd8ee15a1306d1f9201acc41ef39cd9f99a1b
+  subpackages:
+  - mem
+- name: github.com/spf13/cast
+  version: 8965335b8c7107321228e3e3702cab9832751bac
+- name: github.com/spf13/jwalterweatherman
+  version: 7c0cea34c8ece3fbeb2b27ab9b59511d360fb394
+- name: github.com/spf13/pflag
+  version: ee5fd03fd6acfd43e44aea0b4135958546ed8e73
+- name: github.com/spf13/viper
+  version: 4dddf7c62e16bce5807744018f5b753bfe21bbd2
+- name: golang.org/x/crypto
+  version: 49796115aa4b964c318aad4f3084fdb41e9aa067
+  subpackages:
+  - bcrypt
+  - blowfish
+- name: golang.org/x/net
+  version: cbe0f9307d0156177f9dd5dc85da1a31abc5f2fb
+  subpackages:
+  - context
+- name: golang.org/x/sys
+  version: 2320a9c15898af1b1b24f99700d5c1e957f9d8cf
+  subpackages:
+  - unix
+- name: golang.org/x/text
+  version: 1cbadb444a806fd9430d14ad08967ed91da4fa0a
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+- name: gopkg.in/alexcesaro/quotedprintable.v3
+  version: 2caba252f4dc53eaf6b553000885530023f54623
+- name: gopkg.in/tomb.v2
+  version: d5d1b5820637886def9eef33e03a27a9f166942c
+- name: gopkg.in/yaml.v2
+  version: 7f97868eec74b32b0982dd158a51a446d1da7eb5
+testImports: []

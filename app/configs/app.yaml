@@ -1,0 +1,46 @@
+# App base url required to dynamically build absolute media items path.
+baseUrl: ""
+
+# The Data Source Name for the database
+dsn: ""
+
+# Mail server settings
+mailer:
+  host:     ""
+  username: ""
+  password: ""
+  port:     25
+
+# These are secret keys used for JWT signing and verification.
+# Make sure you override these keys in production by the following environment variables:
+#   RESTFUL_JWT_VERIFICATION_KEY
+#   RESTFUL_JWT_SIGNING_KEY
+jwt:
+  verificationKey: ""
+  signingKey:      ""
+  signingMethod:   "HS256"
+
+# User auth token session duration in hours
+userTokenExpire: 72
+
+# Reset password settings
+resetPassword:
+  # user reset password token secret
+  secret: ""
+  # user reset password token valid time in hours
+  expire: 2
+
+# Pagination settings
+pagination:
+  defaultLimit: 15
+  maxLimit:     100
+
+# Upload settings
+upload:
+  dir:     "upload"
+  maxSize: 5
+
+# System email addresses
+emails:
+  noreply: ""
+  support: ""
