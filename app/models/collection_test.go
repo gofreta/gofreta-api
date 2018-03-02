@@ -548,18 +548,16 @@ func TestMetaDate_Validate(t *testing.T) {
 
 	// invalid populated model
 	m2 := &MetaDate{
-		Format: "y-m-d",
-		Mode:   "invalid",
+		Mode: "invalid",
 	}
 
 	// valid populated model
 	m3 := &MetaDate{
-		Format: "y-m-d",
-		Mode:   MetaDateModeDateTime,
+		Mode: MetaDateModeDateTime,
 	}
 
 	testScenarios := []TestValidateScenario{
-		{m1, []string{"format", "mode"}},
+		{m1, []string{"mode"}},
 		{m2, []string{"mode"}},
 		{m3, []string{}},
 	}
@@ -813,20 +811,17 @@ func TestNewMetaSelect(t *testing.T) {
 
 func TestNewMetaDate(t *testing.T) {
 	type MarshalStruct struct {
-		Format interface{} `json:"format"`
-		Mode   interface{} `json:"mode"`
+		Mode interface{} `json:"mode"`
 	}
 
 	testScenarios := []struct {
-		HasError       bool
-		Data           interface{}
-		ExpectedFormat string
-		ExpectedMode   string
+		HasError     bool
+		Data         interface{}
+		ExpectedMode string
 	}{
-		{true, MarshalStruct{123, true}, "Y-m-d H:i:s", MetaDateModeDateTime},
-		{true, MarshalStruct{"test_format", 456}, "test_format", MetaDateModeDateTime},
-		{true, MarshalStruct{false, "test_mode"}, "Y-m-d H:i:s", "test_mode"},
-		{false, MarshalStruct{"test_format", "test_mode"}, "test_format", "test_mode"},
+		{true, MarshalStruct{true}, MetaDateModeDateTime},
+		{true, MarshalStruct{456}, MetaDateModeDateTime},
+		{false, MarshalStruct{"test_mode"}, "test_mode"},
 	}
 
 	for _, scenario := range testScenarios {
@@ -836,10 +831,6 @@ func TestNewMetaDate(t *testing.T) {
 			t.Error("Expected error, got nil")
 		} else if !scenario.HasError && err != nil {
 			t.Error("Expected nil, got error - ", err)
-		}
-
-		if meta.Format != scenario.ExpectedFormat {
-			t.Errorf("Expected %s format, got %s", scenario.ExpectedFormat, meta.Format)
 		}
 
 		if meta.Mode != scenario.ExpectedMode {

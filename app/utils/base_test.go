@@ -55,7 +55,6 @@ func TestInterfaceToStrings(t *testing.T) {
 	}
 
 	expected := []string{
-		"",
 		"123",
 		"Lorem ipsum dolor sit amet",
 	}

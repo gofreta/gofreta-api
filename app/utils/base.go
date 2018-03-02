@@ -26,7 +26,7 @@ func InterfaceToObjectIds(val interface{}) []bson.ObjectId {
 					result = append(result, bson.ObjectIdHex(v))
 				}
 			case bson.ObjectId:
-				if v.String() != "" {
+				if v.Hex() != "" {
 					result = append(result, v)
 				}
 			}
@@ -46,8 +46,7 @@ func InterfaceToStrings(val interface{}) []string {
 				continue
 			}
 
-			switch v := item.(type) {
-			case string:
+			if v, isStr := item.(string); isStr && v != "" {
 				result = append(result, v)
 			}
 		}

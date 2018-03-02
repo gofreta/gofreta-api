@@ -209,13 +209,14 @@ func (dao *MediaDAO) Delete(model *models.Media) error {
 	session := dao.Session.Copy()
 	defer session.Close()
 
-	removeErr := os.Remove(model.Path)
-
-	if removeErr == nil {
-		return session.DB("").C(dao.Collection).RemoveId(model.ID)
+	// delete the file (if exist)
+	if _, err := os.Stat(model.Path); !os.IsNotExist(err) {
+		if removeErr := os.Remove(model.Path); removeErr != nil {
+			return removeErr
+		}
 	}
 
-	return nil
+	return session.DB("").C(dao.Collection).RemoveId(model.ID)
 }
 
 // -------------------------------------------------------------------

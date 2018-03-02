@@ -31,7 +31,6 @@ const (
 
 	// MetaDate supported modes
 	MetaDateModeDate     = "date"
-	MetaDateModeTime     = "time"
 	MetaDateModeDateTime = "datetime"
 )
 
@@ -109,8 +108,7 @@ type (
 
 	// MetaDate struct for the date field meta data model
 	MetaDate struct {
-		Format string `json:"format" bson:"format" form:"format"`
-		Mode   string `json:"mode" bson:"mode" form:"mode"`
+		Mode string `json:"mode" bson:"mode" form:"mode"`
 	}
 
 	// MetaEditor struct for the editor field meta data model
@@ -368,10 +366,8 @@ func (m MetaSelectOption) Validate() error {
 // Validate validates the date collection field meta properties.
 func (m MetaDate) Validate() error {
 	return validation.ValidateStruct(&m,
-		validation.Field(&m.Format, validation.Required),
 		validation.Field(&m.Mode, validation.Required, validation.In(
 			MetaDateModeDate,
-			MetaDateModeTime,
 			MetaDateModeDateTime,
 		)),
 	)
@@ -442,8 +438,7 @@ func NewMetaSelect(data interface{}) (*MetaSelect, error) {
 // NewMetaDate creates and returns new MetaDate instance.
 func NewMetaDate(data interface{}) (*MetaDate, error) {
 	meta := &MetaDate{
-		Mode:   MetaDateModeDateTime,
-		Format: "Y-m-d H:i:s",
+		Mode: MetaDateModeDateTime,
 	}
 
 	err := decodeMetaHandler(data, meta)

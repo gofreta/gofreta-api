@@ -105,7 +105,7 @@ func (api *AuthApi) sendResetEmail(c *routing.Context) error {
 		RessetPasswordHash: renewedUser.ResetPasswordHash,
 		SupportEmail:       gofreta.App.Config.GetString("emails.support"),
 	}
-	body, renderErr := utils.RenderTemplates(params, "gofreta/emails/layout.tmpl", "gofreta/emails/reset_password.tmpl")
+	body, renderErr := utils.RenderTemplates(params, "app/emails/layout.tmpl", "app/emails/reset_password.tmpl")
 	if renderErr != nil {
 		return utils.NewBadRequestError("Oops, an error occurred while rendering the email body.", renderErr)
 	}

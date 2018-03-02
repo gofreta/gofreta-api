@@ -26,9 +26,9 @@ func InitLanguageApi(rg *routing.RouteGroup, session *mgo.Session) {
 		dao:          daos.NewLanguageDAO(session),
 	}
 
-	rg.Get("/languages", authenticateToken(session, "language", "index"), api.index)
+	rg.Get("/languages", authenticateToken(session), api.index)
 	rg.Post("/languages", authenticateToken(session, "language", "create"), api.create)
-	rg.Get("/languages/<id>", authenticateToken(session, "language", "view"), api.view)
+	rg.Get("/languages/<id>", authenticateToken(session), api.view)
 	rg.Put("/languages/<id>", authenticateToken(session, "language", "update"), api.update)
 	rg.Delete("/languages/<id>", authenticateToken(session, "language", "delete"), api.delete)
 }
