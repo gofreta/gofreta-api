@@ -321,7 +321,7 @@ func (m CollectionField) IsEmptyValue(value interface{}) bool {
 }
 
 // -------------------------------------------------------------------
-// • Meta fields validations
+// • Meta field validations
 // -------------------------------------------------------------------
 
 // Validate validates the plain collection field meta properties.
@@ -396,7 +396,7 @@ func (m MetaRelation) Validate() error {
 }
 
 // -------------------------------------------------------------------
-// • Meta fields constructor and helpers
+// • Meta field constructors and helpers
 // -------------------------------------------------------------------
 
 // NewMetaPlain creates and returns new MetaPlain instance.
