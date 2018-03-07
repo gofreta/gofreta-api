@@ -12,7 +12,7 @@ The installation on production is pretty straight-forward.
 
 - Install [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community).
 
-- Download the latest Gofreta binary release and place it on your server.
+- Download the latest [Gofreta binary release](https://github.com/gofreta/gofreta-api/releases) and place it on your server.
     Execute the binary and specify the environment configuration file (see [Configurations](#configurations)):
     ```bash
     ./gofreta -config="/path/to/config.yaml"
