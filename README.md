@@ -1,4 +1,4 @@
-Gofreta - REST API server
+Gofreta REST API server
 ======================================================================
 
 - [Install](#install)
