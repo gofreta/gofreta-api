@@ -1,7 +1,7 @@
 Gofreta - REST API server
 ======================================================================
 
-- [Installation](#installation)
+- [Install](#install)
 - [Configurations](#configurations)
 - [API Reference](#api-reference)
 
@@ -93,7 +93,7 @@ pagination:
 # upload settings
 upload:
   maxSize: 5
-  thumbs: ["100x100", "300x300"]
+  thumbs:  ["100x100", "300x300"]
   dir:     "./uploads"
   url:     "http://localhost:8080/media"
 
