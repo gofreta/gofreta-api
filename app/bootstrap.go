@@ -53,12 +53,13 @@ func InitConfig(configFile string) {
 }
 
 func initDefaultConfig(v *viper.Viper) {
-	v.SetDefault("host", ":8092")
+	// the API base http server address
+	v.SetDefault("host", ":8080")
 
 	// the Data Source Name for the database
-	v.SetDefault("dsn", "localhost/zula")
+	v.SetDefault("dsn", "localhost/gofreta")
 
-	// mail server settings (if empty - no emails will be send)
+	// mail server settings (if `host` is empty no emails will be send)
 	v.SetDefault("mailer.host", "")
 	v.SetDefault("mailer.username", "")
 	v.SetDefault("mailer.password", "")
@@ -69,7 +70,7 @@ func initDefaultConfig(v *viper.Viper) {
 	v.SetDefault("jwt.signingKey", "__your_key__")
 	v.SetDefault("jwt.signingMethod", "HS256")
 
-	// user auth token session duration in hours
+	// user auth token session duration (in hours)
 	v.SetDefault("userTokenExpire", 72)
 
 	// reset password settings
@@ -84,7 +85,7 @@ func initDefaultConfig(v *viper.Viper) {
 	v.SetDefault("upload.maxSize", 5)
 	v.SetDefault("upload.thumbs", []string{"100x100", "300x300"})
 	v.SetDefault("upload.dir", "./uploads")
-	v.SetDefault("upload.url", "http://localhost:8092/media")
+	v.SetDefault("upload.url", "http://localhost:8080/media")
 
 	// system email addresses
 	v.SetDefault("emails.noreply", "noreply@example.com")
