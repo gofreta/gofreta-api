@@ -1,31 +1,29 @@
 package main
 
 import (
+	"gofreta/apis"
 	"gofreta/app"
-	"gofreta/app/apis"
 	"net/http"
 )
 
 func bindRoutes() {
-	apis.InitAuthApi(gofreta.App.API, gofreta.App.MongoSession)
-	apis.InitUserApi(gofreta.App.API, gofreta.App.MongoSession)
-	apis.InitCollectionApi(gofreta.App.API, gofreta.App.MongoSession)
-	apis.InitEntityApi(gofreta.App.API, gofreta.App.MongoSession)
-	apis.InitMediaApi(gofreta.App.API, gofreta.App.MongoSession)
-	apis.InitLanguageApi(gofreta.App.API, gofreta.App.MongoSession)
-	apis.InitKeyApi(gofreta.App.API, gofreta.App.MongoSession)
+	apis.InitAuthApi(app.API, app.MongoSession)
+	apis.InitUserApi(app.API, app.MongoSession)
+	apis.InitCollectionApi(app.API, app.MongoSession)
+	apis.InitEntityApi(app.API, app.MongoSession)
+	apis.InitMediaApi(app.API, app.MongoSession)
+	apis.InitLanguageApi(app.API, app.MongoSession)
+	apis.InitKeyApi(app.API, app.MongoSession)
 }
 
 func main() {
-	gofreta.InitApp()
+	app.InitApp()
 
-	defer gofreta.App.MongoSession.Close()
+	defer app.MongoSession.Close()
 
 	bindRoutes()
 
-	http.Handle("/", gofreta.App.Router)
+	http.Handle("/", app.Router)
 
-	// gracefull shutdown @todo
-	// https://stackoverflow.com/questions/39320025/how-to-stop-http-listenandserve
-	http.ListenAndServe(":8092", nil)
+	http.ListenAndServe(app.Config.GetString("host"), nil)
 }

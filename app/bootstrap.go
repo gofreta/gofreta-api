@@ -1,10 +1,11 @@
-package gofreta
+package app
 
 import (
+	"flag"
+	"fmt"
 	"log"
 	"net/http"
-	"path"
-	"runtime"
+	"net/url"
 	"strings"
 
 	"github.com/globalsign/mgo"
@@ -18,54 +19,97 @@ import (
 	"github.com/spf13/viper"
 )
 
-// ServicesBag defines the base app services and components.
-type ServicesBag struct {
-	MongoSession *mgo.Session
-	Config       *viper.Viper
-	Router       *routing.Router
-	API          *routing.RouteGroup
-}
+var MongoSession *mgo.Session
+var Config *viper.Viper
+var Router *routing.Router
+var API *routing.RouteGroup
 
-// App stores all initialized app services and components.
-var App = ServicesBag{}
+// InitConfig initializes the app config parameters.
+func InitConfig(configFile string) {
+	Config = viper.New()
 
-// InitConfig initializes app configs.
-func InitConfig() {
-	_, currentFile, _, _ := runtime.Caller(0)
-	configsDir := path.Dir(currentFile) + "/configs"
+	// load default configurations
+	initDefaultConfig(Config)
 
-	App.Config = viper.New()
-	App.Config.SetConfigName("app")
-	// App.Config.AddConfigPath("./gofreta/configs")
-	App.Config.AddConfigPath(configsDir)
-	err := App.Config.ReadInConfig() // Find and read the config file
-	if err != nil {
-		panic(err)
+	// load user configurations
+	if configFile != "" {
+		Config.SetConfigFile(configFile)
+		if err := Config.ReadInConfig(); err != nil {
+			panic(err)
+		}
+	}
+
+	// verify required config settings
+	requiredKeys := []string{
+		"host", "dsn",
+		"jwt.verificationKey", "jwt.signingKey", "jwt.signingMethod",
+		"resetPassword.secret", "upload.dir", "upload.url",
+	}
+	for _, key := range requiredKeys {
+		if Config.GetString(key) == "" {
+			panic(fmt.Sprintf("%s config key need to be set!", key))
+		}
 	}
 }
 
-// InitDb initializes and setups app db connection.
+func initDefaultConfig(v *viper.Viper) {
+	v.SetDefault("host", ":8092")
+
+	// the Data Source Name for the database
+	v.SetDefault("dsn", "localhost/zula")
+
+	// mail server settings (if empty - no emails will be send)
+	v.SetDefault("mailer.host", "")
+	v.SetDefault("mailer.username", "")
+	v.SetDefault("mailer.password", "")
+	v.SetDefault("mailer.port", 25)
+
+	// these are secret keys used for JWT signing and verification
+	v.SetDefault("jwt.verificationKey", "__your_key__")
+	v.SetDefault("jwt.signingKey", "__your_key__")
+	v.SetDefault("jwt.signingMethod", "HS256")
+
+	// user auth token session duration in hours
+	v.SetDefault("userTokenExpire", 72)
+
+	// reset password settings
+	v.SetDefault("resetPassword.secret", "__your_secret__")
+	v.SetDefault("resetPassword.expire", 2)
+
+	// pagination settings
+	v.SetDefault("pagination.defaultLimit", 15)
+	v.SetDefault("pagination.maxLimit", 100)
+
+	// upload settings
+	v.SetDefault("upload.maxSize", 5)
+	v.SetDefault("upload.thumbs", []string{"100x100", "300x300"})
+	v.SetDefault("upload.dir", "./uploads")
+	v.SetDefault("upload.url", "http://localhost:8092/media")
+
+	// system email addresses
+	v.SetDefault("emails.noreply", "noreply@example.com")
+	v.SetDefault("emails.support", "support@example.com")
+}
+
+// InitDb initializes and setups the app db connection.
+// NB! You have to close the connection manually (eg. `defer app.MongoSession.Close()`)
 func InitDb(dsn string) {
 	var err error
 
-	App.MongoSession, err = mgo.Dial(dsn)
+	MongoSession, err = mgo.Dial(dsn)
 
 	if err != nil {
 		panic(err)
 	}
 
-	App.MongoSession.SetMode(mgo.Monotonic, true)
+	MongoSession.SetMode(mgo.Monotonic, true)
 }
 
-// InitRouter initializes and setups app router components.
-func InitRouter() {
-	if App.Config == nil {
-		panic("App config settings are not initialized yet!")
-	}
+// InitRouter initializes and setups the app router components.
+func InitRouter(mediaDir string) {
+	Router = routing.New()
 
-	App.Router = routing.New()
-
-	App.Router.Use(
+	Router.Use(
 		// all these handlers are shared by every route
 		access.Logger(log.Printf),
 		slash.Remover(http.StatusMovedPermanently),
@@ -78,26 +122,40 @@ func InitRouter() {
 		}),
 	)
 
-	App.API = App.Router.Group("/api")
+	API = Router.Group("/api")
 
-	// @todo make the path a config
-	// serve files under the upload directory
-	uploadDir := strings.TrimSuffix(strings.TrimPrefix(App.Config.GetString("upload.dir"), "/"), "/")
-	App.Router.Get("/api/upload/*", file.Server(file.PathMap{
-		"/api/upload/": ("/" + uploadDir + "/"),
+	// --- serve media uploaded files
+	// set files location
+	file.RootPath = Config.GetString("upload.dir")
+
+	// extract upload url path
+	urlParts, parseErr := url.Parse(Config.GetString("upload.url"))
+	if parseErr != nil {
+		panic(parseErr)
+	}
+	publicPath := "/" + strings.TrimPrefix(strings.TrimSuffix(urlParts.Path, "/"), "/") + "/"
+
+	// serve file
+	Router.Get(publicPath+"*", file.Server(file.PathMap{
+		publicPath: "/",
 	}))
+	// ---
 
-	App.API.Use(
-		// these handlers are shared by the routes in the api group only
+	// these handlers are shared by the routes in the api group only
+	API.Use(
 		content.TypeNegotiator(content.JSON),
 	)
 }
 
 // InitApp initializes all main app components.
-func InitApp() *ServicesBag {
-	InitConfig()
-	InitDb(App.Config.GetString("dsn"))
-	InitRouter()
+func InitApp() error {
+	// parse command line flags
+	configFile := flag.String("config", "", "path to user specific app config")
+	flag.Parse()
 
-	return &App
+	InitConfig(*configFile)
+	InitDb(Config.GetString("dsn"))
+	InitRouter(Config.GetString("upload.dir"))
+
+	return nil
 }

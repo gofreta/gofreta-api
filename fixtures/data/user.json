@@ -1,0 +1,59 @@
+[
+	{
+		"_id": "5a7b15cd3fb9dc041c55b45d",
+		"username": "user1",
+		"email": "user1@gofreta.com",
+		"status": "active",
+		"password_hash": "$2a$12$rdX7N6gpAzKJ/7DzCMyVdeRaTUv6faL6GxhTODzlJcuDHRf4hedoO",
+		"reset_password_hash": "a123944eed49b2477715dcd95b7503c4_1767139200",
+		"access": {
+			"user": ["index", "view", "create", "update", "delete"],
+			"key": ["index", "view", "create", "update", "delete"],
+			"language": ["index", "view", "create", "update", "delete"],
+			"media": ["index", "view", "upload", "update", "delete"],
+			"collection": ["index", "view", "create", "update", "delete"],
+			"5a833090e1382351eaad3732": ["index", "view", "create", "update", "delete"],
+			"5a8b32d4e13823769a18bc1c": ["index", "view"],
+			"5a8b33a4e13823769a18bc1d": ["index"]
+		},
+		"created": 0,
+		"modified": 1518554127
+	},
+	{
+		"_id": "5a7c9017e138234e16e3dee6",
+		"username": "user2",
+		"email": "user2@gofreta.com",
+		"status": "active",
+		"password_hash": "$2a$12$H7P6xj5h5LVsllNlxRjCzuwef9kIQ2P6M5P7/afbDUyuXo1XKolHy",
+		"reset_password_hash": "",
+		"access": {
+			"user": ["index", "view", "create", "update", "delete"],
+			"collection": ["index", "view", "create", "update", "delete"],
+			"key": [],
+			"language": ["index", "view", "create", "update", "delete"],
+			"media": ["index", "view", "upload", "update", "delete"]
+		},
+		"created": 1518112791,
+		"modified": 1518554136
+	},
+	{
+		"_id": "5a8a99f0e138230ecd915d37",
+		"username": "user3",
+		"email": "user3@gofreta.com",
+		"status": "inactive",
+		"password_hash": "$2a$12$4k4UM8CSmYME9Oj00csmvOL25I6FDh2h7PKZPIpALb/IZ1zkBljdO",
+		"reset_password_hash": "",
+		"access": {
+			"user": ["index", "view", "create", "update", "delete"],
+			"key": ["index", "view", "create", "update", "delete"],
+			"media": ["index", "view", "upload", "update", "delete"],
+			"language": ["index", "view", "create", "update", "delete"],
+			"collection": ["index", "view", "create", "update", "delete"],
+			"5a833090e1382351eaad3732": ["index", "view", "create", "update", "delete"],
+			"5a8b32d4e13823769a18bc1c": ["index", "view"],
+			"5a8b33a4e13823769a18bc1d": ["index"]
+		},
+		"created": 1519032816,
+		"modified": 1519032816
+	}
+]

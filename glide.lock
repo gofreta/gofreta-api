@@ -1,10 +1,12 @@
-hash: f2042125832a97c6fc783b62d3595d6aa216bb4e5b499da805b05a7e0e756831
-updated: 2018-02-24T15:51:51.947878274+02:00
+hash: 0246e82e597b52813b089cf43663cea943f3a7a0bb6b52c170ccae3d68b33cd2
+updated: 2018-03-07T07:33:56.627826691+02:00
 imports:
 - name: github.com/asaskevich/govalidator
   version: 4b3d68f87f176641ffc147420296013aff66ea32
 - name: github.com/dgrijalva/jwt-go
   version: dbeaa9332f19a944acb5736b4456cfcc02140e29
+- name: github.com/disintegration/imaging
+  version: 1884593a19ddc6f2ea050403430d02c1d0fc1283
 - name: github.com/fsnotify/fsnotify
   version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
 - name: github.com/globalsign/mgo
@@ -53,7 +55,7 @@ imports:
 - name: github.com/mitchellh/mapstructure
   version: 00c29f56e2386353d58c599509e8dc3801b0d716
 - name: github.com/pelletier/go-toml
-  version: acdc4509485b587f5e675510c4f2c63e90ff68a8
+  version: 05bcc0fb0d3e60da4b8dd5bd7e0ea563eb4ca943
 - name: github.com/spf13/afero
   version: ee1bd8ee15a1306d1f9201acc41ef39cd9f99a1b
   subpackages:
@@ -67,12 +69,18 @@ imports:
 - name: github.com/spf13/viper
   version: 4dddf7c62e16bce5807744018f5b753bfe21bbd2
 - name: golang.org/x/crypto
-  version: 49796115aa4b964c318aad4f3084fdb41e9aa067
+  version: 85f98707c97e11569271e4d9b3d397e079c4f4d0
   subpackages:
   - bcrypt
   - blowfish
+- name: golang.org/x/image
+  version: 12117c17ca67ffa1ce22e9409f3b0b0a93ac08c7
+  subpackages:
+  - bmp
+  - tiff
+  - tiff/lzw
 - name: golang.org/x/net
-  version: cbe0f9307d0156177f9dd5dc85da1a31abc5f2fb
+  version: d25186b37f34ebdbbea8f488ef055638dfab272d
   subpackages:
   - context
 - name: golang.org/x/sys
