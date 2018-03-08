@@ -12,7 +12,7 @@ Gofreta REST API server
 
 ## Install
 
-1. Install [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community) and after that apply the following command to insert an initial user and language items (you can change them later):
+- Install [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community) and after that apply the following command to insert an initial user and language items (you can change them later):
   ```bash
   mongo localhost/gofreta --eval '
   var nowTimestamp = Date.now();
@@ -22,14 +22,14 @@ Gofreta REST API server
   // insert English(en) language
   var language = {"title": "English", "locale": "en", "created": nowTimestamp, "modified": nowTimestamp};
   db.language.insert(language);
-  `
+  '
   ```
 
-2. Download the latest [Gofreta binary release](https://github.com/gofreta/gofreta-api/releases) and place it on your server.
-Execute the binary and specify the environment configuration file (see [Configurations](#configurations)):
-```bash
-./gofreta -config="/path/to/config.yaml"
-```
+- Download the latest [Gofreta binary release](https://github.com/gofreta/gofreta-api/releases) and place it on your server.
+  Execute the binary and specify the environment configuration file (see [Configurations](#configurations)):
+  ```bash
+  ./gofreta -config="/path/to/config.yaml"
+  ```
 
 That's it :). Check the API Reference documentation for info how to use the API.
 
