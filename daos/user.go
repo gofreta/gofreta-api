@@ -250,6 +250,11 @@ func (dao *UserDAO) Delete(model *models.User) error {
 	session := dao.Session.Copy()
 	defer session.Close()
 
+	count, _ := dao.Count(nil)
+	if count < 2 {
+		return errors.New("You can't delete the only existing user.")
+	}
+
 	// db write
 	err := session.DB("").C(dao.Collection).RemoveId(model.ID)
 

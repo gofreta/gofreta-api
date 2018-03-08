@@ -207,6 +207,11 @@ func (dao *LanguageDAO) Delete(model *models.Language) error {
 	session := dao.Session.Copy()
 	defer session.Close()
 
+	count, _ := dao.Count(nil)
+	if count < 2 {
+		return errors.New("You can't delete the only existing Language item.")
+	}
+
 	// db write
 	deleteErr := session.DB("").C(dao.Collection).RemoveId(model.ID)
 

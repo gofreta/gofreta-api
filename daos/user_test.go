@@ -554,6 +554,10 @@ func TestUserDAO_Delete(t *testing.T) {
 		{&models.User{ID: bson.ObjectIdHex("5a896174f69744822caee83c")}, true},
 		// existing model
 		{&models.User{ID: bson.ObjectIdHex("5a7b15cd3fb9dc041c55b45d")}, false},
+		// existing model
+		{&models.User{ID: bson.ObjectIdHex("5a7c9017e138234e16e3dee6")}, false},
+		// existing model but because it is the only one left should return an error
+		{&models.User{ID: bson.ObjectIdHex("5a8a99f0e138230ecd915d37")}, true},
 	}
 
 	for _, scenario := range testScenarios {

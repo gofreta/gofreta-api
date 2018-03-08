@@ -325,6 +325,10 @@ func TestLanguageDAO_Delete(t *testing.T) {
 		{&models.Language{ID: bson.ObjectIdHex("5a896174f69744822caee83c")}, true},
 		// existing model
 		{&models.Language{ID: bson.ObjectIdHex("5a894a3ee138237565d4f7ce")}, false},
+		// existing model
+		{&models.Language{ID: bson.ObjectIdHex("5a89601d35eca6cea28f09c8")}, false},
+		// existing model but because it is the only one left should return an error
+		{&models.Language{ID: bson.ObjectIdHex("5a8be9dfe1382310bec8076a")}, true},
 	}
 
 	for _, scenario := range testScenarios {
