@@ -54,7 +54,7 @@ func InitConfig(configFile string) {
 
 func initDefaultConfig(v *viper.Viper) {
 	// the API base http server address
-	v.SetDefault("host", ":8080")
+	v.SetDefault("host", ":8090")
 
 	// the Data Source Name for the database
 	v.SetDefault("dsn", "localhost/gofreta")
@@ -85,7 +85,7 @@ func initDefaultConfig(v *viper.Viper) {
 	v.SetDefault("upload.maxSize", 5)
 	v.SetDefault("upload.thumbs", []string{"100x100", "300x300"})
 	v.SetDefault("upload.dir", "./uploads")
-	v.SetDefault("upload.url", "http://localhost:8080/media")
+	v.SetDefault("upload.url", "http://localhost:8090/media")
 
 	// system email addresses
 	v.SetDefault("emails.noreply", "noreply@example.com")
