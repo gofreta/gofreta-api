@@ -32,7 +32,10 @@ func GetSearchConditions(c *routing.Context, validFields []string) bson.M {
 				extracted[field] = normalizedVal
 			}
 		} else { // regex lookup
-			pattern := regexp.MustCompile(`q\[` + field + `\]`)
+			pattern, patternErr := regexp.Compile(`^q\[` + field + `\]$`)
+			if patternErr != nil {
+				continue
+			}
 
 			for qKey, qVal := range queryParams {
 				if len(qVal) == 0 {
@@ -127,7 +130,10 @@ func GetSortFields(c *routing.Context, validFields []string) []string {
 
 		// check if is valid sort parameter
 		for _, field := range validFields {
-			pattern := regexp.MustCompile(field)
+			pattern, patternErr := regexp.Compile("^" + field + "$")
+			if patternErr != nil {
+				continue
+			}
 
 			if pattern.MatchString(param) == true {
 				result = append(result, sortField)
