@@ -56,7 +56,7 @@ func (api *EntityApi) index(c *routing.Context) error {
 	// ---
 
 	// --- fetch search data
-	searchFields := []string{"status", "created", "modified", `data\.\w+\.\w+`}
+	searchFields := []string{"_id", "status", "created", "modified", `data\.\w+\.\w+`}
 	searchData := utils.GetSearchConditions(c, searchFields)
 
 	searchData["collection_id"] = collection.ID
@@ -67,7 +67,7 @@ func (api *EntityApi) index(c *routing.Context) error {
 	// ---
 
 	// --- fetch sort data
-	sortFields := []string{"status", "created", "modified", `data\.\w+\.\w+`}
+	sortFields := []string{"_id", "status", "created", "modified", `data\.\w+\.\w+`}
 	sortData := utils.GetSortFields(c, sortFields)
 	// ---
 
