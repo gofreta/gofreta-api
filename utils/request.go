@@ -97,7 +97,9 @@ func GetSearchConditions(c *routing.Context, validFields []string) bson.M {
 				result[key] = intervalVal
 			}
 		} else {
-			if floatCast, err := strconv.ParseFloat(val, 64); err == nil { // number
+			if bson.IsObjectIdHex(val) {
+				result[key] = bson.ObjectIdHex(val)
+			} else if floatCast, err := strconv.ParseFloat(val, 64); err == nil { // number
 				result[key] = floatCast
 			} else if val == "true" || val == "false" { // bool
 				result[key] = val == "true"
