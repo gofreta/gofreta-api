@@ -16,14 +16,13 @@ import (
 
 func TestInitAuthApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitAuthApi(routerGroup, TestSession)
+	InitAuthApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"POST /test/auth",
-		"POST /test/forgotten-password",
-		"POST /test/reset-password/<hash>",
+		"POST /auth",
+		"POST /forgotten-password",
+		"POST /reset-password/<hash>",
 	}
 
 	routes := router.Routes()

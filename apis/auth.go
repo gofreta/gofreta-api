@@ -7,6 +7,7 @@ import (
 	"gofreta/models"
 	"gofreta/utils"
 	"net/http"
+	"strings"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -26,15 +27,15 @@ const (
 
 // AuthApi defines auth api services
 type AuthApi struct {
-	routeGroup   *routing.RouteGroup
+	router       *routing.Router
 	mongoSession *mgo.Session
 	dao          *daos.UserDAO
 }
 
 // InitAuthApi sets up the routing of auth endpoints and the corresponding handlers.
-func InitAuthApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitAuthApi(rg *routing.Router, session *mgo.Session) {
 	api := AuthApi{
-		routeGroup:   rg,
+		router:       rg,
 		mongoSession: session,
 		dao:          daos.NewUserDAO(session),
 	}
@@ -99,12 +100,19 @@ func (api *AuthApi) sendResetEmail(c *routing.Context) error {
 	// ---
 
 	// --- render mail body
+	pageLink := app.Config.GetString("resetPassword.pageLink")
+	if pageLink != "" {
+		pageLink = strings.Replace(pageLink, "<hash>", renewedUser.ResetPasswordHash, -1)
+	}
+
 	params := struct {
-		RessetPasswordHash string
-		SupportEmail       string
+		SupportEmail          string
+		ResetPasswordPageLink string
+		RessetPasswordHash    string
 	}{
-		RessetPasswordHash: renewedUser.ResetPasswordHash,
-		SupportEmail:       app.Config.GetString("emails.support"),
+		SupportEmail:          app.Config.GetString("emails.support"),
+		ResetPasswordPageLink: pageLink,
+		RessetPasswordHash:    renewedUser.ResetPasswordHash,
 	}
 	body, renderErr := utils.RenderTemplateStrings(params, emails.Layout, emails.ResetPasswordBody)
 	if renderErr != nil {

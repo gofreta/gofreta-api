@@ -22,7 +22,6 @@ import (
 var MongoSession *mgo.Session
 var Config *viper.Viper
 var Router *routing.Router
-var API *routing.RouteGroup
 
 // InitConfig initializes the app config parameters.
 func InitConfig(configFile string) {
@@ -76,6 +75,9 @@ func initDefaultConfig(v *viper.Viper) {
 	// reset password settings
 	v.SetDefault("resetPassword.secret", "__your_secret__")
 	v.SetDefault("resetPassword.expire", 2)
+	// --- if not empty, the link will be included in the reset password email
+	// --- (use `<hash>` as a placeholder for the reset password token, eg. `http://example.com/reset-password/<hash>`)
+	v.SetDefault("resetPassword.pageLink", "")
 
 	// pagination settings
 	v.SetDefault("pagination.defaultLimit", 15)
@@ -85,7 +87,7 @@ func initDefaultConfig(v *viper.Viper) {
 	v.SetDefault("upload.maxSize", 5)
 	v.SetDefault("upload.thumbs", []string{"100x100", "300x300"})
 	v.SetDefault("upload.dir", "./uploads")
-	v.SetDefault("upload.url", "http://localhost:8090/media")
+	v.SetDefault("upload.url", "http://localhost:8090/upload")
 
 	// system email addresses
 	v.SetDefault("emails.noreply", "noreply@example.com")
@@ -123,8 +125,6 @@ func InitRouter(mediaDir string) {
 		}),
 	)
 
-	API = Router.Group("/api")
-
 	// --- serve media uploaded files
 	// set files location
 	file.RootPath = Config.GetString("upload.dir")
@@ -143,7 +143,7 @@ func InitRouter(mediaDir string) {
 	// ---
 
 	// these handlers are shared by the routes in the api group only
-	API.Use(
+	Router.Use(
 		content.TypeNegotiator(content.JSON),
 	)
 }

@@ -17,16 +17,15 @@ import (
 
 func TestInitCollectionApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitCollectionApi(routerGroup, TestSession)
+	InitCollectionApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"GET /test/collections",
-		"POST /test/collections",
-		"GET /test/collections/<cidentifier>",
-		"PUT /test/collections/<cidentifier>",
-		"DELETE /test/collections/<cidentifier>",
+		"GET /collections",
+		"POST /collections",
+		"GET /collections/<cidentifier>",
+		"PUT /collections/<cidentifier>",
+		"DELETE /collections/<cidentifier>",
 	}
 
 	routes := router.Routes()

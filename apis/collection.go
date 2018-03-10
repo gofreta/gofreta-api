@@ -13,15 +13,15 @@ import (
 
 // CollectionApi defines collection api services
 type CollectionApi struct {
-	routeGroup   *routing.RouteGroup
+	router       *routing.Router
 	mongoSession *mgo.Session
 	dao          *daos.CollectionDAO
 }
 
 // InitCollectionApi sets up the routing of collection endpoints and the corresponding handlers.
-func InitCollectionApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitCollectionApi(rg *routing.Router, session *mgo.Session) {
 	api := CollectionApi{
-		routeGroup:   rg,
+		router:       rg,
 		mongoSession: session,
 		dao:          daos.NewCollectionDAO(session),
 	}

@@ -13,15 +13,15 @@ import (
 
 // KeyApi defines Key api services
 type KeyApi struct {
-	routeGroup   *routing.RouteGroup
+	router       *routing.Router
 	mongoSession *mgo.Session
 	dao          *daos.KeyDAO
 }
 
 // InitKeyApi sets up the routing of Key endpoints and the corresponding handlers.
-func InitKeyApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitKeyApi(rg *routing.Router, session *mgo.Session) {
 	api := KeyApi{
-		routeGroup:   rg,
+		router:       rg,
 		mongoSession: session,
 		dao:          daos.NewKeyDAO(session),
 	}

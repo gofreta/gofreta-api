@@ -17,16 +17,15 @@ import (
 
 func TestInitEntityApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitEntityApi(routerGroup, TestSession)
+	InitEntityApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"GET /test/collections/<cidentifier>/entities",
-		"POST /test/collections/<cidentifier>/entities",
-		"GET /test/collections/<cidentifier>/entities/<id>",
-		"PUT /test/collections/<cidentifier>/entities/<id>",
-		"DELETE /test/collections/<cidentifier>/entities/<id>",
+		"GET /collections/<cidentifier>/entities",
+		"POST /collections/<cidentifier>/entities",
+		"GET /collections/<cidentifier>/entities/<id>",
+		"PUT /collections/<cidentifier>/entities/<id>",
+		"DELETE /collections/<cidentifier>/entities/<id>",
 	}
 
 	routes := router.Routes()

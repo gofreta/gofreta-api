@@ -14,16 +14,16 @@ import (
 
 // EntityApi defines entity api services
 type EntityApi struct {
-	routeGroup    *routing.RouteGroup
+	router        *routing.Router
 	mongoSession  *mgo.Session
 	dao           *daos.EntityDAO
 	collectionDAO *daos.CollectionDAO
 }
 
 // InitEntityApi sets up the routing of entity endpoints and the corresponding handlers.
-func InitEntityApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitEntityApi(rg *routing.Router, session *mgo.Session) {
 	api := EntityApi{
-		routeGroup:    rg,
+		router:        rg,
 		mongoSession:  session,
 		dao:           daos.NewEntityDAO(session),
 		collectionDAO: daos.NewCollectionDAO(session),

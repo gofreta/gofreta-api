@@ -15,7 +15,7 @@ Gofreta REST API server
 - Install [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community) and after that apply the following command to insert an initial user and language items (you can change them later):
   ```bash
   mongo localhost/gofreta --eval '
-  var nowTimestamp = Date.now();
+  var nowTimestamp = Date.now() / 1000 << 0;
   // insert user "admin" with password "123456"
   var adminUser = {"username": "admin", "email": "admin@example.com", "status": "active", "password_hash": "$2a$12$rdX7N6gpAzKJ/7DzCMyVdeRaTUv6faL6GxhTODzlJcuDHRf4hedoO", "reset_password_hash": "", "access": {"user": ["index", "view", "create", "update", "delete"], "key": ["index", "view", "create", "update", "delete"], "language": ["create", "update", "delete"], "media": ["index", "view", "upload", "update", "delete", "replace"], "collection": ["index", "view", "create", "update", "delete"]}, "created": nowTimestamp, "modified": nowTimestamp};
   db.user.insert(adminUser);
@@ -73,7 +73,7 @@ You can <strong>extend it</strong> by using the `-config` flag (eg. `-config="/p
 
 ```yaml
 # the API base http server address
-host: "http://localhost:8080"
+host: "http://localhost:8090"
 
 # the Data Source Name for the database
 dsn: "localhost/gofreta"
@@ -100,6 +100,9 @@ resetPassword:
   secret: "__your_secret__"
   # user reset password token valid duration time (in hours)
   expire: 2
+  # if not empty, the link will be included in the reset password email
+  # (use `<hash>` as a placeholder for the reset password token, eg. `http://example.com/reset-password/<hash>`)
+  pageLink: ""
 
 # pagination settings
 pagination:
@@ -111,7 +114,7 @@ upload:
   maxSize: 5
   thumbs:  ["100x100", "300x300"]
   dir:     "./uploads"
-  url:     "http://localhost:8080/media"
+  url:     "http://localhost:8090/upload"
 
 # system email addresses
 emails:

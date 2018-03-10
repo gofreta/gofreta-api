@@ -24,15 +24,15 @@ import (
 
 // MediaApi defines media api services
 type MediaApi struct {
-	routeGroup   *routing.RouteGroup
+	router       *routing.Router
 	mongoSession *mgo.Session
 	dao          *daos.MediaDAO
 }
 
 // InitMediaApi sets up the routing of media endpoints and the corresponding handlers.
-func InitMediaApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitMediaApi(rg *routing.Router, session *mgo.Session) {
 	api := MediaApi{
-		routeGroup:   rg,
+		router:       rg,
 		mongoSession: session,
 		dao:          daos.NewMediaDAO(session),
 	}

@@ -13,15 +13,15 @@ import (
 
 // LanguageApi defines language api services
 type LanguageApi struct {
-	routeGroup   *routing.RouteGroup
+	router       *routing.Router
 	mongoSession *mgo.Session
 	dao          *daos.LanguageDAO
 }
 
 // InitLanguageApi sets up the routing of language endpoints and the corresponding handlers.
-func InitLanguageApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitLanguageApi(rg *routing.Router, session *mgo.Session) {
 	api := LanguageApi{
-		routeGroup:   rg,
+		router:       rg,
 		mongoSession: session,
 		dao:          daos.NewLanguageDAO(session),
 	}

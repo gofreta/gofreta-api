@@ -14,16 +14,15 @@ import (
 
 func TestInitKeyApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitKeyApi(routerGroup, TestSession)
+	InitKeyApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"GET /test/keys",
-		"POST /test/keys",
-		"GET /test/keys/<id>",
-		"PUT /test/keys/<id>",
-		"DELETE /test/keys/<id>",
+		"GET /keys",
+		"POST /keys",
+		"GET /keys/<id>",
+		"PUT /keys/<id>",
+		"DELETE /keys/<id>",
 	}
 
 	routes := router.Routes()

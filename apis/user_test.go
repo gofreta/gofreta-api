@@ -14,16 +14,15 @@ import (
 
 func TestInitUserApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitUserApi(routerGroup, TestSession)
+	InitUserApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"GET /test/users",
-		"POST /test/users",
-		"GET /test/users/<id>",
-		"PUT /test/users/<id>",
-		"DELETE /test/users/<id>",
+		"GET /users",
+		"POST /users",
+		"GET /users/<id>",
+		"PUT /users/<id>",
+		"DELETE /users/<id>",
 	}
 
 	routes := router.Routes()

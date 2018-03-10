@@ -13,15 +13,15 @@ import (
 
 // UserApi defines user api services
 type UserApi struct {
-	routeGroup   *routing.RouteGroup
+	router       *routing.Router
 	mongoSession *mgo.Session
 	dao          *daos.UserDAO
 }
 
 // InitUserApi sets up the routing of user endpoints and the corresponding handlers.
-func InitUserApi(rg *routing.RouteGroup, session *mgo.Session) {
+func InitUserApi(rg *routing.Router, session *mgo.Session) {
 	api := UserApi{
-		routeGroup:   rg,
+		router:       rg,
 		mongoSession: session,
 		dao:          daos.NewUserDAO(session),
 	}

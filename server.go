@@ -4,16 +4,19 @@ import (
 	"gofreta/apis"
 	"gofreta/app"
 	"net/http"
+
+	"github.com/globalsign/mgo"
+	routing "github.com/go-ozzo/ozzo-routing"
 )
 
-func bindRoutes() {
-	apis.InitAuthApi(app.API, app.MongoSession)
-	apis.InitUserApi(app.API, app.MongoSession)
-	apis.InitCollectionApi(app.API, app.MongoSession)
-	apis.InitEntityApi(app.API, app.MongoSession)
-	apis.InitMediaApi(app.API, app.MongoSession)
-	apis.InitLanguageApi(app.API, app.MongoSession)
-	apis.InitKeyApi(app.API, app.MongoSession)
+func bindRoutes(rg *routing.Router, session *mgo.Session) {
+	apis.InitAuthApi(rg, session)
+	apis.InitUserApi(rg, session)
+	apis.InitCollectionApi(rg, session)
+	apis.InitEntityApi(rg, session)
+	apis.InitMediaApi(rg, session)
+	apis.InitLanguageApi(rg, session)
+	apis.InitKeyApi(rg, session)
 }
 
 func main() {
@@ -21,7 +24,7 @@ func main() {
 
 	defer app.MongoSession.Close()
 
-	bindRoutes()
+	bindRoutes(app.Router, app.MongoSession)
 
 	http.Handle("/", app.Router)
 

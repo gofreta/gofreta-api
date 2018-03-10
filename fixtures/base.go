@@ -2,7 +2,6 @@ package fixtures
 
 import (
 	"encoding/json"
-	"gofreta/models"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -15,40 +14,32 @@ func InitFixtures(mgoSession *mgo.Session) {
 	session := mgoSession.Copy()
 	defer session.Close()
 
-	var users []models.User
-	var keys []models.Key
-	var languages []models.Language
-	var medias []models.Media
-	var collections []models.Collection
-	var entities []models.Entity
-
-	fixturesData := []struct {
-		Items interface{}
-		Name  string
-	}{
-		{users, "user"},
-		{keys, "key"},
-		{languages, "language"},
-		{medias, "media"},
-		{collections, "collection"},
-		{entities, "entity"},
+	collections := []string{
+		"user",
+		"key",
+		"language",
+		"media",
+		"collection",
+		"entity",
 	}
 
 	hexFields := []string{"_id", "collection_id"}
 
-	for _, fixture := range fixturesData {
-		loadFixtureData(&fixture.Items, fixture.Name)
+	for _, collection := range collections {
+		var items []map[string]interface{}
 
-		for _, item := range fixture.Items.([]interface{}) {
-			if casted, ok := item.(map[string]interface{}); ok {
-				for _, field := range hexFields {
-					if v, exist := casted[field]; exist {
-						casted[field] = bson.ObjectIdHex(v.(string))
-					}
+		if err := loadFixtureData(&items, collection); err != nil {
+			panic(err)
+		}
+
+		for _, item := range items {
+			for _, field := range hexFields {
+				if v, exist := item[field]; exist {
+					item[field] = bson.ObjectIdHex(v.(string))
 				}
-
-				session.DB("").C(fixture.Name).Insert(casted)
 			}
+
+			session.DB("").C(collection).Insert(item)
 		}
 	}
 }

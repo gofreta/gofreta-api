@@ -18,17 +18,16 @@ import (
 
 func TestInitMediaApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitMediaApi(routerGroup, TestSession)
+	InitMediaApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"GET /test/media",
-		"POST /test/media",
-		"GET /test/media/<id>",
-		"PUT /test/media/<id>",
-		"POST /test/media/<id>",
-		"DELETE /test/media/<id>",
+		"GET /media",
+		"POST /media",
+		"GET /media/<id>",
+		"PUT /media/<id>",
+		"POST /media/<id>",
+		"DELETE /media/<id>",
 	}
 
 	routes := router.Routes()

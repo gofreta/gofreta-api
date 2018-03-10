@@ -10,6 +10,10 @@ const ResetPasswordBody = `
 
     <p class="text-center emphasis"><b>{{.RessetPasswordHash}}</b></p>
 
+    {{if .ResetPasswordPageLink}}
+        <p>Click on the following link to go the reset password page - {{.ResetPasswordPageLink}}</p>
+    {{end}}
+
     <p>If you think that this message is a mistake or you need any further help, don't hesitate to contact us at <a href="mailto:{{.SupportEmail}}">{{.SupportEmail}}</a>.</p>
 
     <p>

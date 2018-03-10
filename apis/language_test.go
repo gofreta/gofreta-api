@@ -14,16 +14,15 @@ import (
 
 func TestInitLanguageApi(t *testing.T) {
 	router := routing.New()
-	routerGroup := router.Group("/test")
 
-	InitLanguageApi(routerGroup, TestSession)
+	InitLanguageApi(router, TestSession)
 
 	expectedRoutes := []string{
-		"GET /test/languages",
-		"POST /test/languages",
-		"GET /test/languages/<id>",
-		"PUT /test/languages/<id>",
-		"DELETE /test/languages/<id>",
+		"GET /languages",
+		"POST /languages",
+		"GET /languages/<id>",
+		"PUT /languages/<id>",
+		"DELETE /languages/<id>",
 	}
 
 	routes := router.Routes()
