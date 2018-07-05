@@ -48,15 +48,17 @@ go get github.com/gofreta/gofreta-api
 # install glide (a vendoring and dependency management tool), if you don't have it yet
 go get -u github.com/Masterminds/glide
 
+# navigate to the applicatin directory
+cd $GOPATH/src/github.com/gofreta/gofreta-api
+
 # fetch the dependent packages
-cd $GOPATH/gofreta/gofreta-api
 $GOPATH/bin/glide install
 ```
 
 Now you can build and run the application by running the following command:
 ```bash
 # navigate to the applicatin directory
-cd $GOPATH/gofreta/gofreta-api
+cd $GOPATH/src/github.com/gofreta/gofreta-api
 
 # run the application with the default configurations
 go run server.go
