@@ -1,15 +1,16 @@
 package daos
 
 import (
-	"gofreta/app"
-	"gofreta/fixtures"
-	"gofreta/models"
-	"gofreta/utils"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/fixtures"
+	"github.com/gofreta/gofreta-api/models"
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/globalsign/mgo/bson"
 )

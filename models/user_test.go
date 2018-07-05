@@ -2,11 +2,12 @@ package models
 
 import (
 	"encoding/base64"
-	"gofreta/app"
-	"gofreta/utils"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/globalsign/mgo/bson"
 )

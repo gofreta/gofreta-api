@@ -2,9 +2,10 @@ package models
 
 import (
 	"encoding/base64"
-	"gofreta/app"
 	"strings"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
 
 	"github.com/globalsign/mgo/bson"
 )

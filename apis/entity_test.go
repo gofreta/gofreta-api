@@ -1,14 +1,15 @@
 package apis
 
 import (
-	"gofreta/daos"
-	"gofreta/fixtures"
-	"gofreta/models"
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/daos"
+	"github.com/gofreta/gofreta-api/fixtures"
+	"github.com/gofreta/gofreta-api/models"
 
 	"github.com/globalsign/mgo/bson"
 	routing "github.com/go-ozzo/ozzo-routing"

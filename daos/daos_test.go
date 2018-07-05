@@ -1,10 +1,11 @@
 package daos
 
 import (
-	"gofreta/app"
 	"io/ioutil"
 	"os"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
 
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/dbtest"

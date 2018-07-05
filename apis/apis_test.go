@@ -2,7 +2,6 @@ package apis
 
 import (
 	"encoding/json"
-	"gofreta/app"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -10,6 +9,8 @@ import (
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
 
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/dbtest"

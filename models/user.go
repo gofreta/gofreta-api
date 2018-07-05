@@ -2,17 +2,18 @@ package models
 
 import (
 	"errors"
-	"gofreta/app"
-	"gofreta/utils"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/utils"
+
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/globalsign/mgo/bson"
 	"github.com/go-ozzo/ozzo-routing/auth"
-	"github.com/go-ozzo/ozzo-validation"
+	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/go-ozzo/ozzo-validation/is"
 	"golang.org/x/crypto/bcrypt"
 )

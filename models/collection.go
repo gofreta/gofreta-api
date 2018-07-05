@@ -3,11 +3,12 @@ package models
 import (
 	"encoding/json"
 	"errors"
-	"gofreta/utils"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/globalsign/mgo/bson"
 	validation "github.com/go-ozzo/ozzo-validation"

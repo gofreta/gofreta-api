@@ -1,15 +1,16 @@
 package models
 
 import (
-	"gofreta/app"
-	"gofreta/utils"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/utils"
+
 	"github.com/globalsign/mgo/bson"
-	"github.com/go-ozzo/ozzo-validation"
+	validation "github.com/go-ozzo/ozzo-validation"
 )
 
 // -------------------------------------------------------------------

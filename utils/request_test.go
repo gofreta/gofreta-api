@@ -1,11 +1,12 @@
 package utils
 
 import (
-	"gofreta/app"
 	"math"
 	"net/http/httptest"
 	"strconv"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
 
 	"github.com/globalsign/mgo/bson"
 	routing "github.com/go-ozzo/ozzo-routing"

@@ -2,10 +2,6 @@ package apis
 
 import (
 	"fmt"
-	"gofreta/app"
-	"gofreta/daos"
-	"gofreta/models"
-	"gofreta/utils"
 	"image"
 	"image/color"
 	"io"
@@ -16,6 +12,11 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/daos"
+	"github.com/gofreta/gofreta-api/models"
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/disintegration/imaging"
 	"github.com/globalsign/mgo"

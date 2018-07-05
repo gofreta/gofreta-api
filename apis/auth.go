@@ -1,14 +1,15 @@
 package apis
 
 import (
-	"gofreta/app"
-	"gofreta/daos"
-	"gofreta/emails"
-	"gofreta/models"
-	"gofreta/utils"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/daos"
+	"github.com/gofreta/gofreta-api/emails"
+	"github.com/gofreta/gofreta-api/models"
+	"github.com/gofreta/gofreta-api/utils"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/globalsign/mgo"

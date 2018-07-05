@@ -1,8 +1,9 @@
 package models
 
 import (
-	"gofreta/app"
 	"time"
+
+	"github.com/gofreta/gofreta-api/app"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/globalsign/mgo/bson"

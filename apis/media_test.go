@@ -2,15 +2,16 @@ package apis
 
 import (
 	"bytes"
-	"gofreta/app"
-	"gofreta/daos"
-	"gofreta/fixtures"
 	"io"
 	"mime/multipart"
 	"net/http/httptest"
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/daos"
+	"github.com/gofreta/gofreta-api/fixtures"
 
 	routing "github.com/go-ozzo/ozzo-routing"
 	"github.com/go-ozzo/ozzo-routing/content"

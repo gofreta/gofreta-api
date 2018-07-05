@@ -1,12 +1,13 @@
 package models
 
 import (
-	"gofreta/app"
-	"gofreta/utils"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/app"
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/globalsign/mgo/bson"
 )

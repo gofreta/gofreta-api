@@ -1,9 +1,10 @@
 package main
 
 import (
-	"gofreta/apis"
-	"gofreta/app"
 	"net/http"
+
+	"github.com/gofreta/gofreta-api/apis"
+	"github.com/gofreta/gofreta-api/app"
 
 	"github.com/globalsign/mgo"
 	routing "github.com/go-ozzo/ozzo-routing"

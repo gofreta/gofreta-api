@@ -2,12 +2,13 @@ package apis
 
 import (
 	"encoding/json"
-	"gofreta/daos"
-	"gofreta/fixtures"
 	"io"
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/daos"
+	"github.com/gofreta/gofreta-api/fixtures"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	routing "github.com/go-ozzo/ozzo-routing"

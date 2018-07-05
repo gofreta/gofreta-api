@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/globalsign/mgo/bson"
-	"github.com/go-ozzo/ozzo-validation"
+	validation "github.com/go-ozzo/ozzo-validation"
 )
 
 type (

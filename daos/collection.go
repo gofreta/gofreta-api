@@ -2,7 +2,8 @@ package daos
 
 import (
 	"errors"
-	"gofreta/models"
+
+	"github.com/gofreta/gofreta-api/models"
 
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"

@@ -2,10 +2,11 @@ package apis
 
 import (
 	"fmt"
-	"gofreta/daos"
-	"gofreta/models"
-	"gofreta/utils"
 	"net/http"
+
+	"github.com/gofreta/gofreta-api/daos"
+	"github.com/gofreta/gofreta-api/models"
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/globalsign/mgo"
 	routing "github.com/go-ozzo/ozzo-routing"

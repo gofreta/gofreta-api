@@ -2,8 +2,9 @@ package daos
 
 import (
 	"errors"
-	"gofreta/models"
 	"time"
+
+	"github.com/gofreta/gofreta-api/models"
 
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"

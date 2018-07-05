@@ -2,9 +2,10 @@ package utils
 
 import (
 	"bytes"
-	"gofreta/app"
 	"html/template"
 	"net/http"
+
+	"github.com/gofreta/gofreta-api/app"
 
 	"github.com/globalsign/mgo/bson"
 	"github.com/go-gomail/gomail"

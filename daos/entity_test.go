@@ -2,10 +2,11 @@ package daos
 
 import (
 	"encoding/json"
-	"gofreta/fixtures"
-	"gofreta/models"
-	"gofreta/utils"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/fixtures"
+	"github.com/gofreta/gofreta-api/models"
+	"github.com/gofreta/gofreta-api/utils"
 
 	"github.com/globalsign/mgo/bson"
 )
@@ -572,7 +573,7 @@ func TestEntityDAO_validateAndNormalizeData(t *testing.T) {
 		}
 
 		if len(scenario.Model.Data) != len(validLocales) {
-			t.Fatalf("Expected %d locale groups, got %d (scenario %v)", len(validLocales), len(scenario.Model.Data))
+			t.Fatalf("Expected %d locale groups, got %d (scenario %v)", len(validLocales), len(scenario.Model.Data), scenario)
 		}
 
 		for locale, data := range scenario.Model.Data {
@@ -581,7 +582,7 @@ func TestEntityDAO_validateAndNormalizeData(t *testing.T) {
 			}
 
 			if len(data) != len(validKeys) {
-				t.Fatalf("Expected %d data keys, got %d (scenario %v)", len(validKeys), len(data))
+				t.Fatalf("Expected %d data keys, got %d (scenario %v)", len(validKeys), len(data), scenario)
 			}
 
 			for k, _ := range data {
@@ -915,7 +916,7 @@ func TestExtractEntityMedias(t *testing.T) {
 			}
 
 			if scenario.ExpectedCount != len(casted) {
-				t.Fatalf("Expected count to match, got %d (scenario %v)", scenario.ExpectedCount, len(casted), scenario)
+				t.Fatalf("Expected count to match, got %d (scenario %v)", scenario.ExpectedCount, scenario)
 			}
 		}
 	}

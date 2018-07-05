@@ -1,9 +1,10 @@
 package daos
 
 import (
-	"gofreta/fixtures"
-	"gofreta/models"
 	"testing"
+
+	"github.com/gofreta/gofreta-api/fixtures"
+	"github.com/gofreta/gofreta-api/models"
 
 	"github.com/globalsign/mgo/bson"
 )
