@@ -1,0 +1,3 @@
+# check https://github.com/gofreta/gofreta-api#configurations
+
+dsn: "mongo_service/gofreta"

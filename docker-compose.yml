@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mongo_service:
+    image: mongo:3.6-jessie
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: gofreta
+    volumes:
+      - ./docker/mongo/init.js:/docker-entrypoint-initdb.d/init.js
+      - ./docker/mongo/data:/data/db
+
+  api_service:
+    build:
+      context: ./docker/api
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./:/go/src/github.com/gofreta/gofreta-api
+    tty: true
