@@ -5,12 +5,12 @@ Gofreta REST API server
 
 "Go + Mongo" REST API server implementation for [Gofreta](https://gofreta.com).
 
-- [Install](#install)
-- [Development](#development)
+- [Installation](#installation)
 - [Configurations](#configurations)
 - [API Reference](#api-reference)
+- [Development](#development)
 
-## Install
+## Installation
 
 - Install [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community) and after that apply the following command to insert an initial user and language items (you can change them later):
   ```bash
@@ -32,40 +32,6 @@ Gofreta REST API server
   ```
 
 That's it :). Check the API Reference documentation for info how to use the API.
-
-
-## Development
-
-Requirements:
-- [Go 1.6+](https://golang.org/doc/install)
-- [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community)
-
-To download and install the package, execute the following command:
-```bash
-# install the application
-go get github.com/gofreta/gofreta-api
-
-# install glide (a vendoring and dependency management tool), if you don't have it yet
-go get -u github.com/Masterminds/glide
-
-# navigate to the applicatin directory
-cd $GOPATH/src/github.com/gofreta/gofreta-api
-
-# fetch the dependent packages
-$GOPATH/bin/glide install
-```
-
-Now you can build and run the application by running the following command:
-```bash
-# navigate to the applicatin directory
-cd $GOPATH/src/github.com/gofreta/gofreta-api
-
-# run the application with the default configurations
-go run server.go
-
-# run the application with user specified configuration file
-go run server.go -config="/path/to/config.yaml"
-```
 
 
 ## Configurations
@@ -130,6 +96,77 @@ emails:
 ## API Reference
 
 Detailed info and response examples are available at the offical Gofreta docs - https://gofreta.com/docs
+
+
+## Development
+
+#### Docker
+
+Requirements:
+
+- [Docker](https://docs.docker.com/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+Clone or download the [repository](https://github.com/gofreta/gofreta-api) and execute the following commands:
+
+```
+# start the docker daemon service (if is not started already)
+sudo systemctl start docker
+
+# navigate to the project root dir
+cd /path/to/gofreta-api
+
+# start the project docker services
+docker-compose up -d
+
+# fetch and install the dependent packages
+./docker/scripts/glide install
+
+# start the API service and listen to `localhost:8090`
+./docker/scripts/start
+```
+
+For convenience the following helper docker-compose scripts are available:
+
+- **`./docker/scripts/start`** - initialize the API service with the provided `./docker/api/config.yml` configurations
+- **`./docker/scripts/glide`** - alias to the api_service glide binary, eg. `./docker/scripts/glide install`
+- **`./docker/scripts/go`**    - execute any golang commands within the api_service container, eg. `./docker/scripts/go test ./...`
+- **`./docker/scripts/mongo`** - connect to the interactive mongodb shell, eg. `./docker/scripts/mongo`
+
+
+#### Manual
+
+Requirements:
+
+- [Go 1.6+](https://golang.org/doc/install)
+- [MongoDB 3.2+](https://www.mongodb.com/download-center?jmp=nav#community)
+
+To download and install the package, execute the following command:
+```bash
+# install the application
+go get github.com/gofreta/gofreta-api
+
+# install glide (a vendoring and dependency management tool), if you don't have it yet
+go get -u github.com/Masterminds/glide
+
+# navigate to the applicatin directory
+cd $GOPATH/src/github.com/gofreta/gofreta-api
+
+# fetch and install the dependent packages
+$GOPATH/bin/glide install
+```
+
+Now you can build and run the application by running the following command:
+```bash
+# navigate to the applicatin directory
+cd $GOPATH/src/github.com/gofreta/gofreta-api
+
+# run the application with the default configurations
+go run server.go
+
+# run the application with user specified configuration file
+go run server.go -config="/path/to/config.yaml"
+```
 
 
 ## Credits
